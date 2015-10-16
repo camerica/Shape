@@ -1,0 +1,50 @@
+
+public class ShapeSort {
+	public static void main(String[] args) {
+		Shape[] shapeArray = new Shape[5];
+		shapeArray[0] = new Circle(6);
+		shapeArray[1] = new Rectangle(6, 10);
+		shapeArray[2] = new Rhombus(30, 5);
+		shapeArray[3] = new Trapezoid(6, 5, 6);
+		shapeArray[4] = new Triangle(8, 4);
+
+		System.out.println(shapeArray[0].getArea());
+		System.out.println(shapeArray[1].getArea());
+		System.out.println(shapeArray[2].getArea());
+		System.out.println(shapeArray[3].getArea());
+		System.out.println(shapeArray[4].getArea());
+		bubbleSort(shapeArray);
+		printArray(shapeArray);
+	}
+
+	public static Shape[] bubbleSort(Shape[] array) {
+		int alreadyRight = 0;
+		while (alreadyRight < array.length - 1) {
+			alreadyRight = 0;
+			for (int i = 0; i < array.length - 1; i++) {
+				if (array[i].getArea() > array[i + 1].getArea()) {
+					alreadyRight++;
+				}
+
+				if (array[i].getArea() < array[i + 1].getArea()) {
+					{
+						Shape s1 = array[i];
+						Shape s2 = array[i + 1];
+						array[i] = s2;
+						array[i + 1] = s1;
+					}
+
+				}
+			}
+
+		}
+		return array;
+	}
+
+	public static void printArray(Shape[] array) {
+		for (int i = 0; i < array.length; i++) {
+			System.out.println(array[i].getShapeName() + " " + array[i].getArea());
+		}
+	}
+
+}
